@@ -8,12 +8,16 @@ import org.springframework.context.annotation.Bean;
 public class MySpringBootApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(MySpringBootApplication.class, args);
+
+//        SpringApplication.run(MySpringBootApplication.class, args);
+        SpringApplication application = new SpringApplication(MySpringBootApplication.class);
+        application.run(args);
+
 	}
 
     @Bean
     public String hello() {
-        System.out.println("=====Spring Bean 입니다.=====");
+        System.out.println("=====Spring Bean 입니다. ====");
         return "Hello Bean";
     }
 }
