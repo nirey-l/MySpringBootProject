@@ -30,20 +30,21 @@ public class MyRunner implements ApplicationRunner {
     @Autowired
     private CustomerVO customerVO;
 
-    // Loger 객체 생성
+    //Logger 객체생성
     private Logger logger = LoggerFactory.getLogger(MyRunner.class);
-
-
 
     @Override
     public void run(ApplicationArguments args) throws Exception {
+        System.out.println("Logger 구현체 클래스 명 = " + logger.getClass());
         logger.info("현재 활성화된 CustomerVO = {}", customerVO);
         logger.info("MyBootProperties getName() = {}", properties.getName());
+        logger.info("MyBootProperties getFullName() = {}", properties.getFullName());
 
         logger.info("${myboot.name}  = {}", name);
         logger.info("${myboot.age}  = {}", age);
 
-        logger.debug("${myboot.fullName}  = {}", environment.getProperty("myboot.fullName"));
+        logger.debug("DEBUG 레벨");
+        logger.debug(">>> ${myboot.fullName}  = {}", environment.getProperty("myboot.fullName"));
         logger.debug("VM 아규먼트 foo : {}", args.containsOption("foo"));
         logger.debug("Program 아규먼트 bar : {}", args.containsOption("bar"));
 
